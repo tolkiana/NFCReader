@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Privacy - NFC Scan Usage Description</key>
+	<string>&quot;Permissions to use NFC&quot;</string>
 </dict>
 </plist>
