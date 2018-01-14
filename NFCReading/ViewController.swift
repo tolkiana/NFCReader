@@ -9,6 +9,7 @@
 import UIKit
 import CoreNFC
 
+@available(iOS 11.0, *)
 class ViewController: UIViewController {
     
     var nfcSession: NFCNDEFReaderSession?
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     }
 }
 
+@available(iOS 11.0, *)
 extension ViewController: NFCNDEFReaderSessionDelegate {
 
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
@@ -31,6 +33,15 @@ extension ViewController: NFCNDEFReaderSessionDelegate {
         var result = ""
         for payload in messages[0].records {
             result += String.init(data: payload.payload.advanced(by: 3), encoding: .utf8)!
+        }
+        
+        for message in messages {
+            for record in message.records {
+                print("Record Type Id    \(record.typeNameFormat)")
+                print("Record Type       \(record.type)")
+                print("Record Payload    \(record.payload)")
+                print("Record Identifier \(record.identifier)")
+            }
         }
         
         DispatchQueue.main.async {
