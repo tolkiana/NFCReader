@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBAction func scan(_ sender: UIButton) {
         contentLabel.text = ""
         nfcReader.beginSession()
-        nfcReader.readedMessages = { messages in
+        nfcReader.readingCompleted = { messages in
             self.contentLabel.text = messages.joined(separator: "\n")
         }
     }

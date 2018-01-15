@@ -12,7 +12,7 @@ import CoreNFC
 @available(iOS 11.0, *)
 class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     
-    var readedMessages: (([String]) -> ())?
+    var readingCompleted: (([String]) -> ())?
     
     func beginSession() {
         let session = NFCNDEFReaderSession(delegate: self, queue: DispatchQueue.main, invalidateAfterFirstRead: true)
@@ -28,7 +28,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         let stringMessages = payloads.flatMap {
             String.init(data: $0.payload.advanced(by: 3), encoding: .utf8)
         }
-        self.readedMessages?(stringMessages)
+        self.readingCompleted?(stringMessages)
     }
 }
 
