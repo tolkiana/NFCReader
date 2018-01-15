@@ -11,13 +11,13 @@ import UIKit
 @available(iOS 11.0, *)
 class ViewController: UIViewController {
     var nfcReader = NFCReader()
-    
     @IBOutlet var contentLabel: UILabel!
 
     @IBAction func scan(_ sender: UIButton) {
+        contentLabel.text = ""
         nfcReader.beginSession()
         nfcReader.readedMessages = { messages in
-            self.contentLabel.text = messages.joined(separator: " ")
+            self.contentLabel.text = messages.joined(separator: "\n")
         }
     }
 }
