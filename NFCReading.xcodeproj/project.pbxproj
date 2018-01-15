@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38128F3C200C2D93000735A0 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38128F3B200C2D93000735A0 /* NFCReader.swift */; };
 		38EF92401F6DC932009095C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF923F1F6DC932009095C0 /* AppDelegate.swift */; };
 		38EF92421F6DC932009095C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF92411F6DC932009095C0 /* ViewController.swift */; };
 		38EF92451F6DC932009095C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38EF92431F6DC932009095C0 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		38128F32200BED75000735A0 /* NFCReading.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCReading.entitlements; sourceTree = "<group>"; };
+		38128F3B200C2D93000735A0 /* NFCReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
 		38EF923C1F6DC932009095C0 /* NFCReading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFCReading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38EF923F1F6DC932009095C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38EF92411F6DC932009095C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38128F33200C1541000735A0 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				38128F3B200C2D93000735A0 /* NFCReader.swift */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
 		38EF92331F6DC932009095C0 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +65,7 @@
 		38EF923E1F6DC932009095C0 /* NFCReading */ = {
 			isa = PBXGroup;
 			children = (
+				38128F33200C1541000735A0 /* Reader */,
 				38128F32200BED75000735A0 /* NFCReading.entitlements */,
 				38EF923F1F6DC932009095C0 /* AppDelegate.swift */,
 				38EF92411F6DC932009095C0 /* ViewController.swift */,
@@ -146,6 +157,7 @@
 			files = (
 				38EF92421F6DC932009095C0 /* ViewController.swift in Sources */,
 				38EF92401F6DC932009095C0 /* AppDelegate.swift in Sources */,
+				38128F3C200C2D93000735A0 /* NFCReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
