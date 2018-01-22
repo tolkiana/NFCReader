@@ -16,7 +16,9 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     var finishedReadingMessages: (([String]) -> ())?
     
     func beginSession() {
-        let session = NFCNDEFReaderSession(delegate: self, queue: DispatchQueue.main, invalidateAfterFirstRead: true)
+        let session = NFCNDEFReaderSession(delegate: self,
+                                           queue: DispatchQueue.main,
+                                           invalidateAfterFirstRead: true)
         session.begin()
     }
     
