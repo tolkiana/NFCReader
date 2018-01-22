@@ -42,6 +42,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NFCReaderUsageDescription</key>
-	<string>Dame chance wey</string>
+	<string>NFCReader needs permission to read NFC Tags</string>
 </dict>
 </plist>
