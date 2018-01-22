@@ -25,15 +25,15 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     }
     
     func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
-        let parsedMessages = parse(NDEFMessages: messages)
+        let parsedMessages = parse(messages)
         readMessages(from: parsedMessages)
         readURLs(from: parsedMessages)
     }
     
     // MARK: - Private
     
-    private func parse(NDEFMessages: [NFCNDEFMessage]) -> [NFCMessage] {
-        let payloads = NDEFMessages[0].records
+    private func parse(_ messages: [NFCNDEFMessage]) -> [NFCMessage] {
+        let payloads = messages[0].records
         return payloads.map {
             let type = NFCType(rawValue: $0.type.decode())
             switch type {
