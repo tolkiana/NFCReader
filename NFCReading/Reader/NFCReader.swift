@@ -35,14 +35,14 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     private func parse(NDEFMessages: [NFCNDEFMessage]) -> [NFCMessage] {
         let payloads = NDEFMessages[0].records
         return payloads.map {
-            let type = NFCType(rawValue: String.init(data: $0.type, encoding: .utf8) ?? "")
+            let type = NFCType(rawValue: $0.type.decode())
             switch type {
             case .url:
                 return NFCMessage(type: type,
-                           value: String.init(data: $0.payload.advanced(by: 1), encoding: .utf8))
+                                  value: $0.payload.decode(skipping: 1))
             default:
                 return NFCMessage(type: type,
-                           value: String.init(data: $0.payload.advanced(by: 3), encoding: .utf8))
+                                  value: $0.payload.decode(skipping: 3))
             }
         }
     }
