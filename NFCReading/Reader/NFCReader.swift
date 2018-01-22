@@ -28,7 +28,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     
     func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         let parsedMessages = parse(messages)
-        readMessages(from: parsedMessages)
+        readText(from: parsedMessages)
         readURLs(from: parsedMessages)
     }
     
@@ -51,7 +51,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         }
     }
     
-    private func readMessages(from nfcMessages: [NFCMessage]) {
+    private func readText(from nfcMessages: [NFCMessage]) {
         let stringMessages = nfcMessages
             .filter{ $0.type == .text }
             .flatMap{ $0.value }
