@@ -22,11 +22,13 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         session.begin()
     }
     
-    func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
+    func readerSession(_ session: NFCNDEFReaderSession,
+                       didInvalidateWithError error: Error) {
         print("The session was invalidated: \(error.localizedDescription)")
     }
     
-    func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
+    func readerSession(_ session: NFCNDEFReaderSession,
+                       didDetectNDEFs messages: [NFCNDEFMessage]) {
         let parsedMessages = parse(messages)
         readText(from: parsedMessages)
         readURLs(from: parsedMessages)
@@ -39,15 +41,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
             return []
         }
         return payloads.map {
-            let type = NFCType(rawValue: $0.type.decode())
-            switch type {
-            case .url:
-                return NFCMessage(type: type,
-                                  value: $0.payload.decode(skipping: 1))
-            default:
-                return NFCMessage(type: type,
-                                  value: $0.payload.decode(skipping: 3))
-            }
+            NFCMessage(payload: $0)
         }
     }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Detroit Labs LLC. All rights reserved.
 //
 
-import Foundation
+import CoreNFC
 
 enum NFCType: String {
     case text = "T"
@@ -22,5 +22,20 @@ enum NFCType: String {
 
 struct NFCMessage {
     var type: NFCType
-    var value: String?
+    var value: String
+}
+
+extension NFCMessage {
+    @available(iOS 11.0, *)
+    init(payload: NFCNDEFPayload) {
+        let type = NFCType(rawValue: payload.type.decode())
+        switch type {
+        case .url:
+            self.init(type: type,
+                      value: payload.payload.decode(skipping: 1))
+        default:
+            self.init(type: type,
+                      value: payload.payload.decode(skipping: 3))
+        }
+    }
 }
