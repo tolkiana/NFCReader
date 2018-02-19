@@ -28,6 +28,7 @@ struct NFCMessage {
 extension NFCMessage {
     @available(iOS 11.0, *)
     init(payload: NFCNDEFPayload) {
+        print("raw message: \(payload.payload.decode())")
         let type = NFCType(rawValue: payload.type.decode())
         switch type {
         case .url:
