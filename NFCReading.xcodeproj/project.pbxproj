@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		38128F3C200C2D93000735A0 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38128F3B200C2D93000735A0 /* NFCReader.swift */; };
 		38128F40200C3877000735A0 /* NFCMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38128F3F200C3877000735A0 /* NFCMessage.swift */; };
+		38AB3052203A0126006FDB35 /* StringUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3051203A0126006FDB35 /* StringUtilities.swift */; };
+		38AB3054203A4B4A006FDB35 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3053203A4B4A006FDB35 /* Regex.swift */; };
 		38EF92401F6DC932009095C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF923F1F6DC932009095C0 /* AppDelegate.swift */; };
 		38EF92421F6DC932009095C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF92411F6DC932009095C0 /* ViewController.swift */; };
 		38EF92451F6DC932009095C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38EF92431F6DC932009095C0 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		38128F32200BED75000735A0 /* NFCReading.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCReading.entitlements; sourceTree = "<group>"; };
 		38128F3B200C2D93000735A0 /* NFCReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
 		38128F3F200C3877000735A0 /* NFCMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCMessage.swift; sourceTree = "<group>"; };
+		38AB3051203A0126006FDB35 /* StringUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtilities.swift; sourceTree = "<group>"; };
+		38AB3053203A4B4A006FDB35 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		38EF923C1F6DC932009095C0 /* NFCReading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFCReading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38EF923F1F6DC932009095C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38EF92411F6DC932009095C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				38F0D7B0201577B900789DDC /* DataUtilities.swift */,
+				38AB3051203A0126006FDB35 /* StringUtilities.swift */,
+				38AB3053203A4B4A006FDB35 /* Regex.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -178,7 +184,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F0D7B1201577B900789DDC /* DataUtilities.swift in Sources */,
+				38AB3052203A0126006FDB35 /* StringUtilities.swift in Sources */,
 				38EF92421F6DC932009095C0 /* ViewController.swift in Sources */,
+				38AB3054203A4B4A006FDB35 /* Regex.swift in Sources */,
 				38EF92401F6DC932009095C0 /* AppDelegate.swift in Sources */,
 				38128F3C200C2D93000735A0 /* NFCReader.swift in Sources */,
 				38128F40200C3877000735A0 /* NFCMessage.swift in Sources */,
