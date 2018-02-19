@@ -36,7 +36,7 @@ extension NFCMessage {
                       value: payload.payload.decode(skipping: 1))
         default:
             self.init(type: type,
-                      value: payload.payload.decode(skipping: 3))
+                      value: payload.payload.decode(skipping: 3).decodeEmojis())
         }
     }
 }
