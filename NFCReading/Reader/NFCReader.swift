@@ -34,6 +34,26 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         readURLs(from: parsedMessages)
     }
     
+    @available(iOS 13.0, *)
+    func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
+        guard let tag = tags.first else {
+            print("Couldn't read tag");
+            return;
+        }
+        session.connect(to: tag) { (error: Error?) in
+            tag.readNDEF { (message: NFCNDEFMessage?, error: Error?) in
+                let parsedMessages = self.parse(message)
+                self.readText(from: parsedMessages)
+                self.readURLs(from: parsedMessages)
+                session.invalidate()
+            }
+        }
+    }
+
+    func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {
+        print("Detected some tags!");
+    }
+    
     // MARK: - Private
     
     private func parse(_ messages: [NFCNDEFMessage]) -> [NFCMessage] {
@@ -43,6 +63,13 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         return payloads.map {
             NFCMessage(payload: $0)
         }
+    }
+    
+    private func parse(_ message: NFCNDEFMessage?) -> [NFCMessage] {
+        guard let message = message else {
+            return []
+        }
+        return parse([message])
     }
     
     private func readText(from nfcMessages: [NFCMessage]) {
