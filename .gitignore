@@ -1,7 +1,6 @@
-### OSX ###
-*.DS_Store
-.AppleDouble
-.LSOverride
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
 build/
@@ -21,7 +20,8 @@ xcshareddata/
 
 ## Other
 *.moved-aside
-*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
 
 ## Obj-C/Swift specific
 *.hmap
@@ -29,13 +29,7 @@ xcshareddata/
 *.dSYM.zip
 *.dSYM
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
 
-#Fitnesse
-
-#FitnesseRoot/
-#LaunchFitnesse
-#OCSlimProjectTestRunner*
