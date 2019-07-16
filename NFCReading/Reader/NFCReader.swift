@@ -10,16 +10,41 @@ import UIKit
 import CoreNFC
 
 @available(iOS 11.0, *)
-class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
-    
+class NFCReader: NSObject, NFCNDEFReaderSessionDelegate, NFCTagReaderSessionDelegate {
     var finishedReadingURL: ((URL) -> ())?
     var finishedReadingMessages: (([String]) -> ())?
     
+    // MARK: - NFCTagReaderSessionDelegate
+    
+    @available(iOS 13.0, *)
+    func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
+        print("Session is Active!");
+    }
+    
+    @available(iOS 13.0, *)
+    func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
+        print("The session was invalidated: \(error.localizedDescription)")
+    }
+    
+    @available(iOS 13.0, *)
+    func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+        print("Detected some tags!");
+        print(tags)
+    }
+    
+    
+    // MARK: - NFCNDEFReaderSessionDelegate
+    
     func beginSession() {
-        let session = NFCNDEFReaderSession(delegate: self,
-                                           queue: DispatchQueue.main,
-                                           invalidateAfterFirstRead: true)
-        session.begin()
+        if #available(iOS 13.0, *) {
+            let session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
+            session?.begin()
+        } else {
+            let session = NFCNDEFReaderSession(delegate: self,
+                                               queue: DispatchQueue.main,
+                                               invalidateAfterFirstRead: true)
+            session.begin()
+        }
     }
     
     func readerSession(_ session: NFCNDEFReaderSession,
@@ -51,7 +76,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     }
 
     func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {
-        print("Detected some tags!");
+        print("Session is Active!");
     }
     
     // MARK: - Private
