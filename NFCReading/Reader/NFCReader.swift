@@ -48,7 +48,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     private func readText(from nfcMessages: [NFCMessage]) {
         let stringMessages = nfcMessages
             .filter{ $0.type == .text }
-            .flatMap{ $0.value }
+            .flatMap{ $0.value }.map(String.init)
         finishedReadingMessages?(stringMessages)
     }
     
@@ -56,7 +56,7 @@ class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
         let stringUrl = nfcMessages
             .filter { $0.type == .url }
             .flatMap{ $0.value }
-            .first
+            .first.map(String.init)
         if let url = URL(string: stringUrl ?? "") {
             finishedReadingURL?(url)
         }
